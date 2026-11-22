@@ -7,7 +7,6 @@ import rooms from './routes/rooms'
 import checkout from './routes/checkout'
 import { Layout } from './components/layout'
 import massages from './routes/massages'
-import { serveStatic } from 'hono/bun'
 import bookings from './routes/bookings'
 
 const app = new Hono()
@@ -16,15 +15,11 @@ const app = new Hono()
 app.use('*', logger())
 app.use('*', secureHeaders())
 
-
-// Serve everything in /public as static files
-app.use("/images/*", serveStatic({ root: "./public" }));
-
 /* ── Routes ── */
 app.route('/', listings)         // GET /
 app.route('/listings', listings) // GET /listings/:filter?
 app.route('/rooms', rooms)       // GET /rooms/:id
-app.route('/massages', massages)    // GET /massages/:id
+app.route('/massages', massages) // GET /massages/:id
 app.route('/bookings', bookings) // GET /bookings/:ref
 app.route('/checkout', checkout) // GET /checkout/:roomId
 
@@ -84,6 +79,5 @@ app.onError((err, c) => {
     500
   )
 })
-
 
 export default app
