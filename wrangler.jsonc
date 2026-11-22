@@ -1,10 +1,17 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "florida",
+  "name": "florida-booking",
   "main": "src/index.ts",
-  "compatibility_date": "2026-11-01",
+  "compatibility_date": "2026-11-22",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": "./public"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "florida-db",
+      "database_id": "f32fb821-85cb-488a-b54d-37c470f090c9"
+    }
+  ]
 }
