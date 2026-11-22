@@ -9,7 +9,10 @@ import { Layout } from './components/layout'
 import massages from './routes/massages'
 import bookings from './routes/bookings'
 
-const app = new Hono()
+type Bindings = {
+  DB: D1Database
+}
+const app = new Hono<{ Bindings: Bindings }>()
 
 /* ── Global middleware ── */
 app.use('*', logger())
